@@ -17,7 +17,6 @@ class Usuario{
         void identificar_usuario();
         void modificar_usuario();
         void mostrar_usuario();
-        void eliminar_usuario();
 };
 
 Usuario::Usuario(string u,string c,string n,string a,int e,string d,string t,string m){
