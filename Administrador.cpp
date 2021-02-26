@@ -33,4 +33,4 @@ void Administrador::mostrar_administrador(){
     mostrar_usuario();
     cout<<"Codigo de administrador: "<<codigo<<endl;
     cout<<"Sueldo: "<<sueldo<<endl;
-} 
+}
