@@ -9,7 +9,7 @@ class Administrador : public Usuario{
         string sueldo;
     public:
         Administrador(string,string,string,string,int,string,string,string,string,float);
-        void modificar_administrador();
+        void modificar_administrador(int);
         void mostrar_administrador();
         void supervisar_tienda();
 };
@@ -19,9 +19,14 @@ Administrador::Administrador(string u,string c,string n,string a,int e,string d,
     sueldo=c;
 }
 
-void Administrador::modificar_administrador(){
-    modificar_usuario();
-
+void Administrador::modificar_administrador(int dato){
+    if((dato<9)||(dato==0)){
+        modificar_usuario(dato);
+    }
+    if((dato==9)||(dato==0)){
+        cout<<"Actualizar sueldo: ";
+        cin>>sueldo;
+    }
 }
 
 void Administrador::mostrar_administrador(){

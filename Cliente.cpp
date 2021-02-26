@@ -9,7 +9,7 @@ class Cliente : public Usuario{
         string preferencias;
     public:
         Cliente(string,string,string,string,int,string,string,string,string,string);
-        void modificar_cliente();
+        void modificar_cliente(int);
         void mostrar_cliente();
 };
 
@@ -18,9 +18,14 @@ Cliente::Cliente(string u,string c,string n,string a,int e,string d,string t,str
     preferencias=p;
 }
 
-void Cliente::modificar_cliente(){
-    modificar_usuario();
-    
+void Cliente::modificar_cliente(int dato){
+    if((dato<9)||(dato==0)){
+        modificar_usuario(dato);
+    }
+    if((dato==9)||(dato==0)){
+        cout<<"Cambiar preferencias: ";
+        getline(cin,preferencias);
+    }
 }
 
 void Cliente::mostrar_cliente(){

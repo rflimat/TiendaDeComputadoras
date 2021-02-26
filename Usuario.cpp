@@ -15,7 +15,7 @@ class Usuario{
     public:
         Usuario(string,string,string,string,int,string,string,string);
         void identificar_usuario();
-        void modificar_usuario();
+        void modificar_usuario(int);
         void mostrar_usuario();
 };
 
@@ -30,49 +30,36 @@ Usuario::Usuario(string u,string c,string n,string a,int e,string d,string t,str
     correo=m;
 }
 
-void Usuario::modificar_usuario(){
-    int dato;
-    cout<<"\nEliga el dato que desea modificar: ";
-    cout<<"\n[1] Usuario";
-    cout<<"\n[2] Contrasenia";
-    cout<<"\n[3] Nombres";
-    cout<<"\n[4] Apellidos";
-    cout<<"\n[5] Edad";
-    cout<<"\n[6] DNI";
-    cout<<"\n[7] Telefono";
-    cout<<"\n[8] Correo";
-    cout<<"\n[9] Todo";
-    cout<<"\nIngrese su opcion aqui: ";
-    cin>>dato;
-    if((dato==1)||(dato==9)){
+void Usuario::modificar_usuario(int dato){
+    if((dato==1)||(dato==0)){
         cout<<"Nuevo Usuario: ";
         getline(cin,usuario);
     }
-    if((dato==2)||(dato==9)){
+    if((dato==2)||(dato==0)){
         cout<<"Nueva contraseña: ";
         getline(cin,contrasenia);
     }
-    if((dato==3)||(dato==9)){
+    if((dato==3)||(dato==0)){
         cout<<"Cambiar nombres: ";
         getline(cin,nombres);
     }
-    if((dato==4)||(dato==9)){
+    if((dato==4)||(dato==0)){
         cout<<"Cambiar apellidos: ";
         getline(cin,apellidos);
     }
-    if((dato==5)||(dato==9)){
+    if((dato==5)||(dato==0)){
         cout<<"Actualizar edad: ";
         cin>>edad;
     }
-    if((dato==6)||(dato==9)){
+    if((dato==6)||(dato==0)){
         cout<<"Cambiar DNI: ";
         getline(cin,DNI);;
     }
-    if((dato==7)||(dato==9)){
+    if((dato==7)||(dato==0)){
         cout<<"Actualizar telefono: ";
         getline(cin,telefono);
     }
-    if((dato==8)||(dato==9)){
+    if((dato==8)||(dato==0)){
         cout<<"Actualizar correo: ";
         getline(cin,correo);
     }

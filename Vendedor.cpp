@@ -9,7 +9,7 @@ class Vendedor : public Usuario {
         float sueldo;
     public:
         Vendedor(string,string,string,string,int,string,string,string,string,float);
-        void modificar_vendedor();
+        void modificar_vendedor(int);
         void mostrar_vendedor();
         void vender_productos();
 };
@@ -19,9 +19,14 @@ Vendedor::Vendedor(string u,string c,string n,string a,int e,string d,string t,s
     sueldo=s;
 }
 
-void Vendedor::modificar_vendedor(){
-    modificar_usuario();
-
+void Vendedor::modificar_vendedor(int dato){
+    if((dato<9)||(dato==0)){
+        modificar_usuario(dato);
+    }
+    if((dato==9)||(dato==0)){
+        cout<<"Actualizar sueldo: ";
+        cin>>sueldo;
+    }
 }
 
 void Vendedor::mostrar_vendedor(){
