@@ -15,18 +15,50 @@ class Producto{
         float precio;
         Proveedor *proveedor;
     public:
-        Producto(int,int,string,string,string,string,float);
-        void set_proveedor(Proveedor *);
+        Producto(int,int,string,string,string,string,float,Proveedor *,int);
+        string get_codigo();
+        string get_nombre();
+        string get_descripcion();
+        int get_cantidad();
+        float get_precio();
+        void validar_registro(int);
         void modificar_productos(int);
         void mostrar_productos();
 };
 
-Producto::Producto(int c,int ct,string n,string m,string g,string d,float p){
-    codigo="P-00" + Convert(c+1);
+Producto::Producto(int c,int ct,string n,string m,string g,string d,float p,Proveedor *pr,int cd){
+    codigo="P-00"+IntToString(cd+1);
+    cantidad=c;
+    nombre_componente=n;
+    marca=m;
+    gama=g;
+    descripcion=d;
+    precio=p;
+    proveedor=pr;
 }
 
-void Producto::set_proveedor(Proveedor *p){
-    proveedor=p;
+string Producto::get_codigo(){
+    return codigo;
+}
+
+string Producto::get_nombre(){
+    return nombre_componente;
+}
+
+string Producto::get_descripcion(){
+    return descripcion;
+}
+
+int Producto::get_cantidad(){
+    return cantidad;
+}
+
+float Producto::get_precio(){
+    return precio;
+}
+
+void Producto::validar_registro(int cant_quit){
+    cantidad=cantidad-cant_quit;
 }
 
 void Producto::modificar_productos(int dato){
@@ -57,10 +89,12 @@ void Producto::modificar_productos(int dato){
 }
 
 void Producto::mostrar_productos(){
-    cout<<"Componente: "<<nombre_componente<<endl;
-    cout<<"Cantidad: "<<cantidad<<endl;
-    cout<<"Marca: "<<marca<<endl;
-    cout<<"Gama: "<<gama<<endl;
-    cout<<"Descripcion: \n"<<descripcion<<endl;
-    cout<<"Precio: "<<precio<<endl;
+    cout<<left;
+    cout<<setw(25)<<codigo;
+    cout<<setw(25)<<nombre_componente;
+    cout<<setw(25)<<cantidad;
+    cout<<setw(25)<<marca;
+    cout<<setw(25)<<gama;
+    cout<<setw(25)<<precio;
+    cout<<setw(25)<<proveedor->get_proveedor();
 }
