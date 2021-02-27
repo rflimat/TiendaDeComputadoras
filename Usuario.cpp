@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string.h>
+#include<iomanip>
 using namespace std;
 
 class Usuario{
@@ -14,6 +15,8 @@ class Usuario{
         string correo;
     public:
         Usuario(string,string,string,string,int,string,string,string);
+        string get_usuario();
+        string get_contrasenia();
         void identificar_usuario();
         void modificar_usuario(int);
         void mostrar_usuario();
@@ -28,6 +31,14 @@ Usuario::Usuario(string u,string c,string n,string a,int e,string d,string t,str
     DNI=d;
     telefono=t;
     correo=m;
+}
+
+string Usuario::get_usuario(){
+    return usuario;    
+}
+
+string Usuario::get_contrasenia(){
+    return contrasenia;
 }
 
 void Usuario::modificar_usuario(int dato){
@@ -66,12 +77,11 @@ void Usuario::modificar_usuario(int dato){
 }
 
 void Usuario::mostrar_usuario(){
-    cout<<"Usuario: "<<usuario<<endl;
-    cout<<"Contraseña: "<<contrasenia<<endl;
-    cout<<"Nombre: "<<nombres<<endl;
-    cout<<"Apellidos: "<<apellidos<<endl;
-    cout<<"Edad: "<<edad<<endl;
-    cout<<"DNI: "<<DNI<<endl;
-    cout<<"Telefono: "<<telefono<<endl;
-    cout<<"Correo: "<<correo<<endl;
+    cout<<setw(25)<<usuario;
+    cout<<setw(25)<<nombres;
+    cout<<setw(25)<<apellidos;
+    cout<<setw(25)<<edad;
+    cout<<setw(25)<<DNI;
+    cout<<setw(25)<<telefono;
+    cout<<setw(25)<<correo;
 }

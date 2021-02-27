@@ -1,22 +1,27 @@
 #include<iostream>
 #include<string.h>
-#include "Usuario.cpp"
 using namespace std;
 
-class Administrador : public Usuario{
+class Administrador : public Usuario {
     private:
         string codigo;
         string sueldo;
     public:
-        Administrador(string,string,string,string,int,string,string,string,string,float);
+        Administrador(string,string,string,string,int,string,string,string,int,float);
+        bool confirmar_acceso(string,string);
         void modificar_administrador(int);
         void mostrar_administrador();
         void supervisar_tienda();
 };
 
-Administrador::Administrador(string u,string c,string n,string a,int e,string d,string t,string m,string cd,float s) : Usuario(u,c,n,a,e,d,t,m){
-    codigo=c;
+Administrador::Administrador(string u,string c,string n,string a,int e,string d,string t,string m,int cd,float s) : Usuario(u,c,n,a,e,d,t,m){
+    codigo="A-00"+IntToString(cd);
     sueldo=c;
+}
+
+bool Administrador::confirmar_acceso(string u,string c){
+    if((get_usuario()==u)&&(get_contrasenia()==c))
+        return true;
 }
 
 void Administrador::modificar_administrador(int dato){
@@ -30,7 +35,8 @@ void Administrador::modificar_administrador(int dato){
 }
 
 void Administrador::mostrar_administrador(){
+    cout<<left;
+    cout<<setw(25)<<codigo;
     mostrar_usuario();
-    cout<<"Codigo de administrador: "<<codigo<<endl;
-    cout<<"Sueldo: "<<sueldo<<endl;
+    cout<<setw(25)<<sueldo;
 }

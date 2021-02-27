@@ -1,6 +1,5 @@
 #include<iostream>
 #include<string.h>
-#include "Usuario.cpp"
 using namespace std;
 
 class Vendedor : public Usuario {
@@ -8,15 +7,21 @@ class Vendedor : public Usuario {
         string codigo;
         float sueldo;
     public:
-        Vendedor(string,string,string,string,int,string,string,string,string,float);
+        Vendedor(string,string,string,string,int,string,string,string,int,float);
+        bool confirmar_acceso(string,string);
         void modificar_vendedor(int);
         void mostrar_vendedor();
         void vender_productos();
 };
 
-Vendedor::Vendedor(string u,string c,string n,string a,int e,string d,string t,string m,string cd,float s) : Usuario(u,c,n,a,e,d,t,m){
-    codigo=cd;
+Vendedor::Vendedor(string u,string c,string n,string a,int e,string d,string t,string m,int cd,float s) : Usuario(u,c,n,a,e,d,t,m){
+    codigo="V-00"+IntToString(cd);
     sueldo=s;
+}
+
+bool Vendedor::confirmar_acceso(string u,string c){
+    if((get_usuario()==u)&&(get_contrasenia()==c))
+        return true;
 }
 
 void Vendedor::modificar_vendedor(int dato){
@@ -30,7 +35,8 @@ void Vendedor::modificar_vendedor(int dato){
 }
 
 void Vendedor::mostrar_vendedor(){
+    cout<<left;
+    cout<<setw(25)<<codigo;
     mostrar_usuario();
-    cout<<"Codigo de vendedor: "<<codigo<<endl;
-    cout<<"Sueldo: "<<sueldo<<endl;
+    cout<<setw(25)<<sueldo;
 }
