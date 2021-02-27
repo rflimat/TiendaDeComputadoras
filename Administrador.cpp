@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string.h>
+#include "convertidorVariables.cpp"
 #include "Usuario.cpp"
 using namespace std;
 
@@ -8,14 +9,14 @@ class Administrador : public Usuario{
         string codigo;
         string sueldo;
     public:
-        Administrador(string,string,string,string,int,string,string,string,string,float);
+        Administrador(string,string,string,string,int,string,string,string,int,float);
         void modificar_administrador(int);
         void mostrar_administrador();
         void supervisar_tienda();
 };
 
-Administrador::Administrador(string u,string c,string n,string a,int e,string d,string t,string m,string cd,float s) : Usuario(u,c,n,a,e,d,t,m){
-    codigo=c;
+Administrador::Administrador(string u,string c,string n,string a,int e,string d,string t,string m,int cd,float s) : Usuario(u,c,n,a,e,d,t,m){
+    codigo=c+IntToString(cd);
     sueldo=c;
 }
 
