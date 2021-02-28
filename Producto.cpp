@@ -1,7 +1,6 @@
 #include<iostream>
 #include<string.h>
-#include "convertidorVariables.cpp"
-#include "Proveedor.cpp"
+#include<iomanip>
 using namespace std;
 
 class Producto{
@@ -9,13 +8,15 @@ class Producto{
         string codigo;
         int cantidad;
         string nombre_componente;
+        string categoria;
         string marca;
         string gama;
         string descripcion;
         float precio;
         Proveedor *proveedor;
     public:
-        Producto(int,int,string,string,string,string,float,Proveedor *,int);
+        Producto(int,string,string,string,string,string,float,Proveedor*,int);
+        void set_proveedor(Proveedor *);
         string get_codigo();
         string get_nombre();
         string get_descripcion();
@@ -26,15 +27,20 @@ class Producto{
         void mostrar_productos();
 };
 
-Producto::Producto(int c,int ct,string n,string m,string g,string d,float p,Proveedor *pr,int cd){
+Producto::Producto(int c,string n,string ct,string m,string g,string d,float p,Proveedor* pr,int cd){
     codigo="P-00"+IntToString(cd+1);
     cantidad=c;
     nombre_componente=n;
+    categoria=ct;
     marca=m;
     gama=g;
     descripcion=d;
     precio=p;
     proveedor=pr;
+}
+
+void Producto::set_proveedor(Proveedor *pro){
+    proveedor=pro;
 }
 
 string Producto::get_codigo(){
@@ -71,18 +77,22 @@ void Producto::modificar_productos(int dato){
         getline(cin,nombre_componente);
     }
     if((dato==3)||(dato==0)){
-        cout<<"Cambiar marca de componente: ";
+        cout<<"Cambiar categoria de componente: ";
         getline(cin,marca);
     }
     if((dato==4)||(dato==0)){
+        cout<<"Cambiar marca de componente: ";
+        getline(cin,marca);
+    }
+    if((dato==5)||(dato==0)){
         cout<<"Cambiar gama de componente: ";
         getline(cin,gama);
     }
-    if((dato==5)||(dato==0)){
+    if((dato==6)||(dato==0)){
         cout<<"Cambiar descripcion de componente\n: ";
         getline(cin,descripcion);
     }
-    if((dato==6)||(dato==0)){
+    if((dato==7)||(dato==0)){
         cout<<"Actualizar precio de componente: ";
         cin>>precio;
     }
@@ -90,11 +100,12 @@ void Producto::modificar_productos(int dato){
 
 void Producto::mostrar_productos(){
     cout<<left;
-    cout<<setw(25)<<codigo;
-    cout<<setw(25)<<nombre_componente;
-    cout<<setw(25)<<cantidad;
+    cout<<setw(8)<<codigo;
+    cout<<setw(40)<<nombre_componente;
+    cout<<setw(25)<<categoria;
+    cout<<setw(16)<<cantidad;
     cout<<setw(25)<<marca;
-    cout<<setw(25)<<gama;
-    cout<<setw(25)<<precio;
-    cout<<setw(25)<<proveedor->get_proveedor();
+    cout<<setw(16)<<gama;
+    cout<<setw(16)<<precio;
+    cout<<setw(16)<<proveedor->get_proveedor();
 }
