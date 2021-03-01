@@ -1,7 +1,5 @@
 #include<iostream>
 #include<string.h>
-#include<iomanip>
-#include "convertidorVariables.cpp"
 using namespace std;
 
 class Proveedor{
@@ -12,17 +10,14 @@ class Proveedor{
         string direccion;
         string telefono;
     public:
-        Proveedor(int,string,string,string,string,int);
+        Proveedor(string,string,string,string,int);
+        string get_codigo();
         string get_proveedor();
         void modificar_proveedor(int);
         void mostrar_proveedor();
 };
 
-string Proveedor::get_proveedor(){
-    return nombre;
-}
-
-Proveedor::Proveedor(int c,string n,string r,string d,string t,int cd){
+Proveedor::Proveedor(string n,string r,string d,string t,int cd){
     codigo="PRO-00"+IntToString(cd+1);
     nombre=n;
     RUC=r;
@@ -30,7 +25,16 @@ Proveedor::Proveedor(int c,string n,string r,string d,string t,int cd){
     telefono=t;
 }
 
+string Proveedor::get_codigo(){
+    return codigo;
+}
+
+string Proveedor::get_proveedor(){
+    return nombre;
+}
+
 void Proveedor::modificar_proveedor(int dato){
+    fflush(stdin);
     if((dato==1)||(dato==0)){
         cout<<"Cambiar nombre: ";
         getline(cin,nombre);
