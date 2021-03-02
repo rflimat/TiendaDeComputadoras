@@ -1,56 +1,63 @@
 #include<iostream>
 #include<string.h>
-#include<vector>
-#include "Registro.cpp"
-#include "Cliente.cpp"
-#include "Vendedor.cpp"
+#include<iomanip>
 using namespace std;
 
 class Factura{
     private:
         Cliente *cliente;
         Vendedor *vendedor;
-        vector<Registro*> listaProductos;
+        Registro* listaProductos;
+        int cantidad_total=0;
         string codigo;
         string fecha;
         string tipo_pago;
-        float total;
+        float total=0.00;
     public:
-        Factura(Cliente*,Vendedor*,int,string,string);
-        float set_total(float);
+        Factura(int,string,string,Cliente*,Vendedor*);
+        string get_codigo();
+        void set_total(float);
         void set_registro(Registro*);
         void ver_factura();
         void mostrar_facturas();
         float get_total();
 };
 
-Factura::Factura(Cliente* cl,Vendedor* v,int cd,string f,string tp){
+Factura::Factura(int cd,string f,string tp,Cliente* cl,Vendedor* v){
     codigo="F-00"+IntToString(cd+1);
-    cliente=cl;
-    vendedor=v;
     fecha=f;
     tipo_pago=tp;
+    cliente=cl;
+    vendedor=v;
 }
 
 void Factura::set_registro(Registro* r){
-    listaProductos.push_back(r);
+    listaProductos=r;
 }
 
-float Factura::set_total(float t){
+void Factura::set_total(float t){
     total=t;
 }
 
-void Factura::ver_factura(){
-    cout<<"\tTIENDA DE COMPUTADORAS XD\n\n";
-    cout<<"Factura: "<<codigo<<endl;
-    cout<<"Cliente: "<<cliente<<endl;
-    cout<<"Tipo pago: "<<tipo_pago<<endl;
+string Factura::get_codigo(){
+    return codigo;
+}
 
-    for(int i=0;i<listaProductos.size();i++){
-        listaProductos[i]->mostrar_registro();
-        cout<<endl;
-    }
-    cout<<"\nTotal: "<<total<<endl;
+void Factura::ver_factura(){
+    cout<<"\n\t\t\tTIENDA DE COMPUTADORAS XD\n\n";
+    cout<<"Factura: "<<codigo<<endl;
+    cout<<"Cliente: "<<cliente->get_nombres()<<endl;
+    cout<<"DNI: "<<cliente->get_DNI()<<endl;
+    cout<<"Tipo pago: "<<tipo_pago<<endl;
+    cout<<endl<<left;
+    cout<<setw(16)<<"Codigo";
+    cout<<setw(40)<<"Nombre";
+    cout<<setw(16)<<"Cantidad";
+    cout<<setw(16)<<"Precio U.";
+    cout<<setw(16)<<"Subtotal";
+    cout<<endl;
+    listaProductos->mostrar_registro();
+    cout<<"\n\nTotal: "<<total<<endl<<endl;
 }
 
 void Factura::mostrar_facturas(){
@@ -58,7 +65,8 @@ void Factura::mostrar_facturas(){
     cout<<setw(25)<<codigo;
     cout<<setw(25)<<fecha;
     cout<<setw(25)<<tipo_pago;
-    cout<<setw(25)<<cliente;
+    cout<<setw(25)<<cliente->get_nombres();
+    cout<<setw(25)<<vendedor->get_nombres();
     cout<<setw(25)<<total;
 }
 
