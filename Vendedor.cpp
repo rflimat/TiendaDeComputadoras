@@ -8,15 +8,24 @@ class Vendedor : public Usuario {
         float sueldo;
     public:
         Vendedor(string,string,string,string,int,string,string,string,int,float);
+        string get_codigo();
+        string get_nombres();
         bool confirmar_acceso(string,string);
         void modificar_vendedor(int);
         void mostrar_vendedor();
-        void vender_productos();
 };
 
 Vendedor::Vendedor(string u,string c,string n,string a,int e,string d,string t,string m,int cd,float s) : Usuario(u,c,n,a,e,d,t,m){
-    codigo="V-00"+IntToString(cd);
+    codigo="V-00"+IntToString(cd+1);
     sueldo=s;
+}
+
+string Vendedor::get_codigo(){
+    return codigo;
+}
+
+string Vendedor::get_nombres(){ 
+    return Usuario::get_nombres();
 }
 
 bool Vendedor::confirmar_acceso(string u,string c){
@@ -36,7 +45,7 @@ void Vendedor::modificar_vendedor(int dato){
 
 void Vendedor::mostrar_vendedor(){
     cout<<left;
-    cout<<setw(25)<<codigo;
+    cout<<setw(8)<<codigo;
     mostrar_usuario();
-    cout<<setw(25)<<sueldo;
+    cout<<setw(16)<<sueldo;
 }
