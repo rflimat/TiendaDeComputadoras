@@ -17,6 +17,8 @@ class Usuario{
         Usuario(string,string,string,string,int,string,string,string);
         string get_usuario();
         string get_contrasenia();
+        virtual string get_nombres();
+        virtual string get_DNI();
         void identificar_usuario();
         void modificar_usuario(int);
         void mostrar_usuario();
@@ -41,7 +43,16 @@ string Usuario::get_contrasenia(){
     return contrasenia;
 }
 
+string Usuario::get_nombres(){
+    return nombres+" "+apellidos;
+}
+
+string Usuario::get_DNI(){
+    return DNI;
+}
+
 void Usuario::modificar_usuario(int dato){
+    fflush(stdin);
     if((dato==1)||(dato==0)){
         cout<<"Nuevo Usuario: ";
         getline(cin,usuario);
@@ -77,11 +88,11 @@ void Usuario::modificar_usuario(int dato){
 }
 
 void Usuario::mostrar_usuario(){
-    cout<<setw(25)<<usuario;
+    cout<<setw(16)<<usuario;
     cout<<setw(25)<<nombres;
     cout<<setw(25)<<apellidos;
-    cout<<setw(25)<<edad;
-    cout<<setw(25)<<DNI;
-    cout<<setw(25)<<telefono;
+    cout<<setw(16)<<edad;
+    cout<<setw(16)<<DNI;
+    cout<<setw(16)<<telefono;
     cout<<setw(25)<<correo;
 }
