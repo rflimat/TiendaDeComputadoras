@@ -21,9 +21,9 @@ int main(){
     Administrador *administrador[2];
     Proveedor *proveedor[5];
     Producto *producto[100];
-    Registro *registro[20];
-    Factura *factura[20];
-    Informe *informe[12];
+    Registro *registro[50];
+    Factura *factura[50];
+    Informe *informe[10];
 
     //Tienda
     Tienda tienda = Tienda("Tienda de Computadoras XD","20759349421","Av. Grau 1530","943233242",10000.00);
