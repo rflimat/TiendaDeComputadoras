@@ -11,8 +11,8 @@
 #include "Producto.cpp"
 #include "Registro.cpp"
 #include "Factura.cpp"
-/*#include "Informe.cpp"
-#include "Tienda.cpp"*/
+#include "Informe.cpp"
+#include "Tienda.cpp"
 using namespace std;
 
 int main(){
@@ -23,6 +23,10 @@ int main(){
     Producto *producto[100];
     Registro *registro[20];
     Factura *factura[20];
+    Informe *informe[12];
+
+    //Tienda
+    Tienda tienda = Tienda("Tienda de Computadoras XD","20759349421","Av. Grau 1530","943233242",10000.00);
 
     //Administradores
     administrador[0]=new Administrador("rflimat","all101","Raul","Lima",18,"75934942","943233242","raulflimat@gmail.com",0,3000);
@@ -48,12 +52,18 @@ int main(){
     producto[6]=new Producto(2,"EVGA 600W Real 80","Fuente de Poder","EVGA","Alta","Fuente de poder excelente",280.00,proveedor[0],6);
     producto[7]=new Producto(2,"Cooler Aerocool Mirage 360 Argb","Cooler","Aerocool","Alta","Enfriamento RGB",490.00,proveedor[0],7);
 
+    //Facturas
+    factura[0]=new Factura(0,"20/02/2020","Efectivo",cliente[0],vendedor[0]); 
+    registro[0]=new Registro(); registro[0]->agregar_producto(producto[2],1);
+    factura[0]->set_registro(registro[0]);factura[0]->set_total(registro[0]->get_total());
+
     string us,ct,u,c,n,a,d,t,m,cr,tp,pf,r,g,ctg,fe;
-    string cod,det;
+    string cod,det,asg;
     float s,pre;
     int e,can;
-    int cv=1,cc=1,cpr=2,cp=8,cf=0;
-    int entrar,menu,pr,p,f,v;
+    int cv=1,cc=1,cpr=2,cp=8,cf=1,ci=0;
+    int entrar,menu,pr,p,f,v,in,td;
+    int y=0,z=0;
     do{
         system("cls");
         cout<<"\n\tTIENDA DE COMPUTADORAS XD"<<endl;
@@ -70,8 +80,8 @@ int main(){
                 getline(cin,us);
                 cout<<"Contrasenia: ";
                 getline(cin,ct);
-                for(int i=0;i<2;i++){
-                    if(administrador[i]->confirmar_acceso(us,ct)){
+                while((y<2)||(z<cv)){
+                    if(((administrador[y]->confirmar_acceso(us,ct))==true)||((vendedor[z]->confirmar_acceso(us,ct))==true)){
                         do{
                             system("cls");
                             cout<<"\tMENU DE OPCIONES"<<endl;
@@ -594,18 +604,16 @@ int main(){
                                             break;
                                         default:
                                             break;
-
                                     }
                                     break;
                                 case 5:
                                     system("cls");
                                     cout<<"\t\tFACTURAS"<<endl;
                                     cout<<"\n[1] Generar Factura";
-                                    cout<<"\n[2] Modificar Factura";
-                                    cout<<"\n[3] Ver Factura";
-                                    cout<<"\n[4] Lista de Facturas";
+                                    cout<<"\n[2] Ver Factura";
+                                    cout<<"\n[3] Lista de Facturas";
                                     cout<<"\n[4] Eliminar Factura";
-                                    cout<<"\n[6] Salir";
+                                    cout<<"\n[5] Salir";
                                     cout<<"\n\nIngrese su opcion: ";
                                     cin>>f;
                                     system("cls");
@@ -613,58 +621,103 @@ int main(){
                                         case 1:
                                             cout<<"\tGENERAR FACTURA\n"<<endl;
                                             fflush(stdin);
-                                            cout<<"Ingresar fecha: ";
-                                            getline(cin,fe);
-                                            cout<<"Ingresar tipo de pago: ";
-                                            getline(cin,tp);
-                                            cout<<"Ingresar codigo de cliente: ";
+                                            cout<<"Ingresar codigo de vendedor: ";
                                             getline(cin,cod);
-                                            int pos1,aux;
-                                            for(int i=0;i<cc;i++){
-                                                if(cod==cliente[i]->get_codigo()){
-                                                    pos1==i;
-                                                    break;
-                                                }
-                                                aux=i;
-                                            }
-                                            if(aux==cc-1){
-                                                cout<<"\nCodigo incorrecto. Ingrese de nuevo!"<<endl;
-                                                system("pause");
-                                                break;
-                                            }
-                                            cout<<"\nIngresar codigo de vendedor: ";
-                                            getline(cin,det);
-                                            int pos2,aux1;
                                             for(int i=0;i<cv;i++){
-                                                if(det==vendedor[i]->get_codigo()){
-                                                    pos2==i;
+                                                if(cod==vendedor[i]->get_codigo()){
+                                                    cout<<"Ingresar fecha: ";
+                                                    getline(cin,fe);
+                                                    cout<<"Ingresar tipo de pago: ";
+                                                    getline(cin,tp);
+                                                    cout<<"Ingresar codigo de cliente: ";
+                                                    getline(cin,det);
+                                                    for(int j=0;j<cc;j++){
+                                                        if(det==cliente[j]->get_codigo()){
+                                                            factura[cf]=new Factura(cf,fe,tp,cliente[j],vendedor[i]);
+                                                            registro[cf]=new Registro();
+                                                            cout<<"\nAgregar productos: "<<endl;
+                                                            string determinar="Si";
+                                                            while((determinar=="Si")||(determinar=="si")){
+                                                                fflush(stdin);
+                                                                cout<<"\nIngrese codigo de producto: ";
+                                                                getline(cin,asg);
+                                                                int pos2;
+                                                                for(int l=0;l<cp;l++){
+                                                                    if(asg==producto[l]->get_codigo()){
+                                                                        cout<<"\nCodigo de producto correcto"<<endl;
+                                                                        pos2=l;
+                                                                        break;
+                                                                    }
+                                                                }
+                                                                cout<<"\nCantidad de productos: ";
+                                                                cin>>can;
+                                                                registro[cf]->agregar_producto(producto[pos2],can);
+                                                                cout<<"\nDesea continuar (Si/No): ";
+                                                                getline(cin,determinar);
+                                                            }
+                                                            factura[cf]->set_registro(registro[cf]);
+                                                            factura[cf]->set_total(registro[cf]->get_total());
+                                                            cf++;
+                                                            break;
+                                                        }
+                                                    }
                                                     break;
                                                 }
-                                                aux1=i;
                                             }
-                                            if(aux1==cv-1){
-                                                cout<<"\nCodigo incorrecto. Ingrese de nuevo!"<<endl;
-                                                system("pause");
-                                                break;
-                                            }
-                                            cout<<"\nAgregar productos: ";
-                                            registro[cf]->set_producto(*producto);
-                                            registro[cf]->agregar_producto();
-                                            factura[cf]=new Factura(cliente[pos1],vendedor[pos2],cf,fe,tp);
-                                            factura[cf]->set_registro(registro[cf]);
-                                            factura[cf]->set_total(registro[cf]->get_total());
-                                            cf++;
                                             break;
                                         case 2:
-                                            break;
-                                        case 3:
-                                            cout<<"\tVER FACTURA\n"<<endl;
-                                            cout<<"\nIngresar codigo de vendedor: ";
-                                            getline(cin,det);
+                                            cout<<"\tVER FACTURA"<<endl;
+                                            fflush(stdin);
+                                            cout<<"\nIngresar codigo de factura: ";
+                                            getline(cin,cod);
+                                            system("cls");
                                             for(int i=0;i<cf;i++){
-                                                if(det==factura[i]->get_codigo()){
+                                                if(cod==factura[i]->get_codigo()){
                                                     factura[i]->ver_factura();
                                                     break;
+                                                }
+                                            }
+                                            system("pause");
+                                            break;
+                                        case 3:
+                                            cout<<"\t\tLISTA DE FACTURA\n"<<endl;
+                                            cout<<left;
+                                            cout<<setw(25)<<"Codigo";
+                                            cout<<setw(25)<<"Fecha";
+                                            cout<<setw(25)<<"Tipo de pago";
+                                            cout<<setw(25)<<"Cliente";
+                                            cout<<setw(25)<<"Vendedor";
+                                            cout<<setw(25)<<"Total";
+                                            cout<<endl;
+                                            for(int i=0;i<cf;i++){
+                                                factura[i]->mostrar_facturas();
+                                                cout<<endl;
+                                            }
+                                            cout<<endl;
+                                            system("pause");
+                                            break;
+                                        case 4:
+                                            cout<<"\tELIMINAR FACTURA"<<endl;
+                                            fflush(stdin);
+                                            cout<<"\nIngresar codigo de factura: ";
+                                            getline(cin,cod);
+                                            int aux;
+                                            for(int i=0;i<cf;i++){
+                                                if(cod==factura[i]->get_codigo()){
+                                                    fflush(stdin);
+                                                    cout<<"\nEsta seguro de eliminar factura(Si/No): ";
+                                                    getline(cin,det);
+                                                    if((det=="Si")||(det=="si")){
+                                                        delete factura[i];
+                                                        cf=cf-1;
+                                                        cout<<"Factura Eliminado\n"<<endl;
+                                                        system("pause");
+                                                        break;
+                                                    }else{
+                                                        cout<<"Factura No eliminado\n"<<endl;
+                                                        system("pause");
+                                                        break;
+                                                    } 
                                                 }
                                                 aux=i;
                                             }
@@ -673,18 +726,125 @@ int main(){
                                                 system("pause");
                                                 break;
                                             }
+                                            break;
+                                        case 5:
+                                            break;
+                                        default:
+                                            break;
                                     }
+                                    break;
+                                case 6:
+                                    system("cls");
+                                    cout<<"\t\tINFORMES"<<endl;
+                                    cout<<"\n[1] Generar Informe";
+                                    cout<<"\n[2] Mostrar Informes";
+                                    cout<<"\n[3] Exportar Informes";
+                                    cout<<"\n[4] Salir";
+                                    cout<<"\n\nIngrese su opcion: ";
+                                    cin>>in;
+                                    system("cls");
+                                    switch(in){
+                                        case 1:
+                                            cout<<"\tREGISTRO DE INFORMES\n"<<endl;
+                                            fflush(stdin);
+                                            cout<<"Ingresar mes: ";
+                                            getline(cin,m);
+                                            cout<<"Ingresar anio: ";
+                                            getline(cin,a);
+                                            informe[ci]=new Informe(m,a,ci);
+                                            for(int f=0;f<cf;f++){
+                                                informe[ci]->obtener_ventas(factura[f]);
+                                                informe[ci]->determinar_ganancia(tienda.get_capital());
+                                            }
+                                            ci++;
+                                            break;
+                                        case 2:
+                                            cout<<"\t\tMOSTRAR INFORMES\n"<<endl;
+                                            cout<<left;
+                                            cout<<setw(25)<<"Codigo";
+                                            cout<<setw(25)<<"Mes";
+                                            cout<<setw(25)<<"Anio";
+                                            cout<<setw(25)<<"Ventas";
+                                            cout<<setw(25)<<"Ganancia";
+                                            cout<<setw(25)<<"Crecimiento";
+                                            cout<<endl;
+                                            for(int i=0;i<ci;i++){
+                                                informe[i]->mostrar_informe();
+                                                cout<<endl;
+                                            }
+                                            cout<<endl;
+                                            system("pause");
+                                            break;
+                                        case 3:
+                                            cout<<"\t\tEXPORTAR INFORMES\n";
+                                            for(int i=0;i<ci;i++){
+                                                informe[i]->exportar_informe();
+                                            }
+                                            cout<<"\nInforme exportado\n"<<endl;
+                                            system("pause");
+                                            break;
+                                        case 4:
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
+                                case 7:
+                                    system("cls");
+                                    cout<<"\t\tTIENDA"<<endl;
+                                    cout<<"\n[1] Mostrar usuarios";
+                                    cout<<"\n[2] Mostrar productos";
+                                    cout<<"\n[3] Informacion sobre tienda";
+                                    cout<<"\n[4] Salir";
+                                    cout<<"\n\nIngrese su opcion: ";
+                                    cin>>td;
+                                    system("cls");
+                                    switch(td){
+                                        case 1:
+                                            for(int t=0;t<2;t++){
+                                                tienda.set_usuarios(administrador[t]);
+                                            }
+                                            for(int t=0;t<cc;t++){
+                                                tienda.set_usuarios(cliente[t]);
+                                            }
+                                            for(int t=0;t<cv;t++){
+                                                tienda.set_usuarios(vendedor[t]);
+                                            }
+                                            tienda.mostrar_usuarios();
+                                            cout<<endl;
+                                            system("pause");
+                                            break;
+                                        case 2:
+                                            for(int t=0;t<cp;t++){
+                                                tienda.set_productos(producto[t]);
+                                            }
+                                            tienda.mostrar_productos();
+                                            cout<<endl;
+                                            system("pause");
+                                            break;
+                                        case 3:
+                                            cout<<"\t\tINFORMACION DE TIENDA\n"<<endl;
+                                            tienda.mostrar_datos();
+                                            cout<<endl;
+                                            system("pause");
+                                            break;
+                                        case 4:
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
                                 case 8:
                                     break;     
                             }
                         }while(menu!=8);
                         break;
-                    }
-                    else{
+                    }else{
                         cout<<"\nContrasenia incorrecta"<<endl;
                         system("pause");
                         break;
                     }
+                    y++;z++;
                 }
                 break;
             case 2:
