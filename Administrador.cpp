@@ -11,7 +11,6 @@ class Administrador : public Usuario {
         bool confirmar_acceso(string,string);
         void modificar_administrador(int);
         void mostrar_administrador();
-        void supervisar_tienda();
 };
 
 Administrador::Administrador(string u,string c,string n,string a,int e,string d,string t,string m,int cd,float s) : Usuario(u,c,n,a,e,d,t,m){
@@ -20,8 +19,9 @@ Administrador::Administrador(string u,string c,string n,string a,int e,string d,
 }
 
 bool Administrador::confirmar_acceso(string u,string c){
-    if((get_usuario()==u)&&(get_contrasenia()==c))
+    if((get_usuario()==u)&&(get_contrasenia()==c)){
         return true;
+    }     
 }
 
 void Administrador::modificar_administrador(int dato){
