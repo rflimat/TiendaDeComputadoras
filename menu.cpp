@@ -19,14 +19,14 @@
 using namespace std;
 
 int main(){
-    Cliente *cliente[50];
-    Vendedor *vendedor[10];
-    Administrador *administrador[2];
-    Proveedor *proveedor[5];
-    Producto *producto[100];
-    Registro *registro[50];
-    Factura *factura[50];
-    Informe *informe[10];
+    Cliente *cliente[50];//Clase cliente
+    Vendedor *vendedor[10];//Clase vendedor
+    Administrador *administrador[2];//Clase administrador
+    Proveedor *proveedor[5];//Clase Proveedor
+    Producto *producto[100];//Clase Producto
+    Registro *registro[50];//Clase Registro
+    Factura *factura[50];//Clase Factura
+    Informe *informe[10];//Clase Informe
 
     //Tienda
     Tienda tienda = Tienda("Tienda de Computadoras R8L Computer","20759349421","Av. Grau 1530","943233242",10000.00);
@@ -36,24 +36,37 @@ int main(){
     administrador[1]=new Administrador("bevillamontey","all102","Betto","Villamonte",19,"79323232","921121222","bevillamontey@gmail.com",1,3000);
 
     //Vendedores
+    //vendedor[indice]=new Vendedor(usuario,contrasenia,nombres,apellidos,edad,DNI,telefono,correo,indice,sueldo);
     vendedor[0]=new Vendedor("vendedor1","all103","Jose","Calizaya",19,"63232452","964322323","josec@gmail.com",0,1500);
+    vendedor[1]=new Vendedor("vendedor2","all104","Ramiro","Mamani",19,"61498822","910223120","ramirom@gmail.com",1,1500);
+    vendedor[2]=new Vendedor("vendedor3","all105","William","Villanueva",18,"72456831","915217201","willamv@gmail.com",2,1500);
 
     //Cliente
-    cliente[0]=new Cliente("cliente1","c101","Luis","Gonzales",17,"79121332","982121443","luis_g@gmail.com",0,"Gaming");
+    //cliente[indice]=new Vendedor(usuario,contrasenia,nombres,apellidos,edad,DNI,telefono,correo,indice,sueldo);
+    cliente[0]=new Cliente("cliente1","c101","Luis","Gonzales",18,"79121332","982121443","luis_g@gmail.com",0,"Gaming");
+    cliente[1]=new Cliente("cliente2","c102","Pedro","Ramirez",21,"71241216","922315045","pedro_r@gmail.com",1,"Estudio");
+    cliente[2]=new Cliente("cliente3","c103","Juan","Flores",35,"06023504","915253201","juan_f@gmail.com",2,"Oficina");
+    cliente[3]=new Cliente("cliente4","c104","Mario","Perez",50,"00603125","966443127","mario_p@gmail.com",3,"Streaming");
+    cliente[4]=new Cliente("cliente5","c105","Ariana","Horna",26,"66312718","931504025","ariana_h@gmail.com",4,"Arquitectura");
 
     //Proveedores
+    //proveedor[indice]=new Proveedor(nombre,RUC,direccion,telefono,indice);
     proveedor[0]=new Proveedor("Computer INC","20621122456","Av. Garcilazo 1000","933122122",0);
     proveedor[1]=new Proveedor("Magitech INC","32412109454","Av. Arequipa 2540","994923329",1);
 
     //Productos
+    //producto[indice]=new Producto(cantidad,nombre,categoria,marca,gama,descripcion,precio,proveedor[1],indice);
     producto[0]=new Producto(2,"Case Gamer Aerocool Prime-g-bk-v2 RGB","Gabinete","Aerocool","Alta","Gamer full",149.00,proveedor[0],0);
     producto[1]=new Producto(3,"Asus X570 E-Gaming","Placa Madre","Asus","Alta","Placa superpotente",785.00,proveedor[0],1);
-    producto[2]=new Producto(2,"AMD Ryzen 9 3900X","Procesador","AMD","Alta","Procesador superpotente",2430.00,proveedor[0],2);
-    producto[3]=new Producto(5,"HyperX DDR4 32GB","Memoria RAM","HyperX","Alta","Memoria estable para tu PC",829.00,proveedor[0],3);
-    producto[4]=new Producto(2,"Asus Nvidia RTX 2060","Tarjeta grafica","Asus","Alta","Tarjeta grafica para gaming",1869.00,proveedor[0],4);
-    producto[5]=new Producto(3,"WD M.2 SSD 1TB","Disco Solido","Western Digital","Alta","Disco duro veloz",729.00,proveedor[0],5);
-    producto[6]=new Producto(2,"EVGA 600W Real 80","Fuente de Poder","EVGA","Alta","Fuente de poder excelente",280.00,proveedor[0],6);
-    producto[7]=new Producto(2,"Cooler Aerocool Mirage 360 Argb","Cooler","Aerocool","Alta","Enfriamento RGB",490.00,proveedor[0],7);
+    producto[2]=new Producto(3,"Asus X570 E-Gaming","Placa Madre","Asus","Alta","Placa superpotente",785.00,proveedor[0],2);
+    producto[3]=new Producto(2,"AMD Ryzen 9 3900X","Procesador","AMD","Alta","Procesador superpotente",2430.00,proveedor[0],3);
+    producto[4]=new Producto(2,"AMD Ryzen 9 3900X","Procesador","AMD","Alta","Procesador superpotente",2430.00,proveedor[0],4);
+    producto[5]=new Producto(5,"HyperX DDR4 32GB","Memoria RAM","HyperX","Alta","Memoria estable para tu PC",829.00,proveedor[0],5);
+    producto[6]=new Producto(2,"Asus Nvidia RTX 2060","Tarjeta grafica","Asus","Alta","Tarjeta grafica para gaming",1869.00,proveedor[0],6);
+    producto[7]=new Producto(3,"WD M.2 SSD 1TB","Disco Solido","Western Digital","Alta","Disco duro veloz",729.00,proveedor[0],7);
+    producto[8]=new Producto(2,"EVGA 600W Real 80","Fuente de Poder","EVGA","Alta","Fuente de poder excelente",280.00,proveedor[0],8);
+    producto[9]=new Producto(2,"Cooler Aerocool Mirage 360 Argb","Cooler","Aerocool","Alta","Enfriamento RGB",490.00,proveedor[0],9);
+    //producto[10]=new Producto();
 
     //Facturas
     factura[0]=new Factura(0,"20/02/2020","Efectivo",cliente[0],vendedor[0]); 
