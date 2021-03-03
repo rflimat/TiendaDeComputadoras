@@ -8,7 +8,6 @@ class Factura{
         Cliente *cliente;
         Vendedor *vendedor;
         Registro* listaProductos;
-        int cantidad_total=0;
         string codigo;
         string fecha;
         string tipo_pago;
@@ -16,11 +15,11 @@ class Factura{
     public:
         Factura(int,string,string,Cliente*,Vendedor*);
         string get_codigo();
+        float get_total();
         void set_total(float);
         void set_registro(Registro*);
         void ver_factura();
         void mostrar_facturas();
-        float get_total();
 };
 
 Factura::Factura(int cd,string f,string tp,Cliente* cl,Vendedor* v){

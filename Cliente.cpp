@@ -26,7 +26,7 @@ string Cliente::get_codigo(){
 }
 
 string Cliente::get_nombres(){ 
-    return Usuario::get_nombres();;
+    return Usuario::get_nombres();
 }
 
 string Cliente::get_DNI(){
