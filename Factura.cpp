@@ -44,7 +44,7 @@ string Factura::get_codigo(){
 }
 
 void Factura::ver_factura(){
-    cout<<"\n\t\t\tTIENDA DE COMPUTADORAS XD\n\n";
+    cout<<"\n\t\t\tTienda de Computadoras R8L Computer\n\n";
     cout<<"Factura: "<<codigo<<endl;
     cout<<"Cliente: "<<cliente->get_nombres()<<endl;
     cout<<"DNI: "<<cliente->get_DNI()<<endl;

@@ -1,44 +1,21 @@
+//Metodo de busqueda para codigos de objetos (producto,usuarios,facturas,etc)
 #include<iostream>
+#include<string.h>
 using namespace std;
 
-int buscador_int(int *A, int n,int dato){
-    int m,pos;
-    int izq=1;
-    int der=n;
-    m=int((izq+der)/2);
-    while((A[m]!=dato)&&(izq<=der)){
-        if(dato<A[m]){
-            der=m-1;
-        }else{
-            izq=izq+1;
-        }
-        m=((izq+der)/2);
+template <class arreglo>
+int buscador(arreglo *A,int n,string dato){
+    string codigos[n];
+    for(int i=0;i<n;i++){
+        codigos[i]=A[i]->get_codigo();
     }
-    if(izq<=der){
-        pos=m;
-    }else{
-        pos=-izq;
-    }
-    return pos;
-}
-
-int buscador_string(string *A, int n,string dato){
-    int m,pos;
-    int izq=1;
-    int der=n;
-    m=int((izq+der)/2);
-    while((A[m]!=dato)&&(izq<=der)){
-        if(dato<A[m]){
-            der=m-1;
-        }else{
-            izq=izq+1;
-        }
-        m=((izq+der)/2);
-    }
-    if(izq<=der){
-        pos=m;
-    }else{
-        pos=-izq;
-    }
-    return pos;
+	int i=0;
+	int pos=-1;
+	while((codigos[i]!=dato)&&(i<n)){
+		i++;
+	}
+	if(i<n){
+		pos=i;
+	}
+	return pos;
 }
