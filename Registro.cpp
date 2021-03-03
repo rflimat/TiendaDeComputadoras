@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string.h>
+#include "ordenador.h"
 using namespace std;
 
 class Registro{
@@ -13,7 +14,7 @@ class Registro{
         Registro();
         float get_total();
         void agregar_producto(Producto*,int);
-        void modificar_registro(int,string);
+        void descartar_registro(Registro*);
         void mostrar_registro();
 };
 
@@ -46,23 +47,15 @@ float Registro::get_total(){
     return total;
 }
 
-/*
-void Registro::modificar_registro(int dato,string c){
-    for(int i=0;i<10;i++){
-        if(c==listaProductos[i]->get_codigo()){
-            if(dato==1){
-                cout<<"Cambiar cantidad de productos: ";
-                cin>>cantidad_productos[i];
-            }
-            if(dato==2){
-                delete listaProductos[i];
-                i=i-1;
-            }
-        }
-    }
-}*/
-
 void Registro::mostrar_registro(){
+    string temp[nProductos];
+    for(int i=0;i<nProductos;i++){
+        temp[i]=producto[i]->get_nombre();
+    }
+    ordenador(temp,nProductos);
+    for(int i=0;i<nProductos;i++){
+        producto[i]->set_nombre(temp[i]);
+    }
     cout<<left;
     for(int i=0;i<nProductos;i++){
         cout<<setw(16)<<producto[i]->get_codigo();
@@ -71,5 +64,11 @@ void Registro::mostrar_registro(){
         cout<<setw(16)<<producto[i]->get_precio();
         cout<<setw(16)<<subtotal[i]; 
         cout<<endl;  
+    }
+}
+
+void Registro::descartar_registro(Registro*){
+    for(int i=0;i<nProductos;i++){
+        producto[i]->desvalidar_registro(cantidad_producto[i]);
     }
 }

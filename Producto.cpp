@@ -17,11 +17,13 @@ class Producto{
     public:
         Producto(int,string,string,string,string,string,float,Proveedor*,int);
         void set_proveedor(Proveedor *);
+        void set_nombre(string);
         string get_codigo();
         string get_nombre();
         string get_descripcion();
         int get_cantidad();
         float get_precio();
+        void desvalidar_registro(int);
         void validar_registro(int);
         void modificar_productos(int);
         void mostrar_productos();
@@ -63,8 +65,16 @@ float Producto::get_precio(){
     return precio;
 }
 
+void Producto::set_nombre(string n){
+    nombre_componente=n;
+}
+
 void Producto::validar_registro(int cant_quit){
     cantidad=cantidad-cant_quit;
+}
+
+void Producto::desvalidar_registro(int cant_quit){
+    cantidad=cantidad+cant_quit;
 }
 
 void Producto::modificar_productos(int dato){

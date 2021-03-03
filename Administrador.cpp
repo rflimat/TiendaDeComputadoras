@@ -9,12 +9,13 @@ class Administrador : public Usuario {
     public:
         Administrador(string,string,string,string,int,string,string,string,int,float);
         bool confirmar_acceso(string,string);
+        string get_codigo();
         void modificar_administrador(int);
         void mostrar_administrador();
 };
 
 Administrador::Administrador(string u,string c,string n,string a,int e,string d,string t,string m,int cd,float s) : Usuario(u,c,n,a,e,d,t,m){
-    codigo="A-00"+IntToString(cd);
+    codigo="A-00"+IntToString(cd+1);
     sueldo=c;
 }
 
@@ -22,6 +23,10 @@ bool Administrador::confirmar_acceso(string u,string c){
     if((get_usuario()==u)&&(get_contrasenia()==c)){
         return true;
     }     
+}
+
+string Administrador::get_codigo(){
+    return codigo;
 }
 
 void Administrador::modificar_administrador(int dato){
