@@ -4,7 +4,7 @@
 using namespace std;
 
 void ordenador(string *A,int n){
-    char nombre[n][20];
+    char nombre[n][50];
     char *aux;
     float comp;
     for(int i=0;i<n;i++){

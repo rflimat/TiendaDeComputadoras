@@ -58,8 +58,8 @@ void Registro::mostrar_registro(){
     }
     cout<<left;
     for(int i=0;i<nProductos;i++){
-        cout<<setw(16)<<producto[i]->get_codigo();
-        cout<<setw(40)<<producto[i]->get_nombre();
+        cout<<setw(10)<<producto[i]->get_codigo();
+        cout<<setw(50)<<producto[i]->get_nombre();
         cout<<setw(16)<<cantidad_producto[i];
         cout<<setw(16)<<producto[i]->get_precio();
         cout<<setw(16)<<subtotal[i]; 

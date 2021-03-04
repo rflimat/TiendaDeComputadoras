@@ -50,8 +50,8 @@ void Factura::ver_factura(){
     cout<<"DNI: "<<cliente->get_DNI()<<endl;
     cout<<"Tipo pago: "<<tipo_pago<<endl;
     cout<<endl<<left;
-    cout<<setw(16)<<"Codigo";
-    cout<<setw(40)<<"Nombre";
+    cout<<setw(10)<<"Codigo";
+    cout<<setw(50)<<"Nombre";
     cout<<setw(16)<<"Cantidad";
     cout<<setw(16)<<"Precio U.";
     cout<<setw(16)<<"Subtotal";

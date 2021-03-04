@@ -289,7 +289,7 @@ int main(){
                                             fflush(stdin);
                                             cout<<"Preferencias: \n";
                                             getline(cin,pf);
-                                            cliente[cc]=new Cliente(u,c,n,a,e,d,t,m,cv,pf);
+                                            cliente[cc]=new Cliente(u,c,n,a,e,d,t,m,cc,pf);
                                             cc++;
                                             break;
                                         case 2:
@@ -394,7 +394,7 @@ int main(){
                                         getline(cin,d);
                                         cout<<"Ingresar telefono: ";
                                         getline(cin,t);
-                                        proveedor[cpr]=new Proveedor(n,r,d,t,cp);
+                                        proveedor[cpr]=new Proveedor(n,r,d,t,cpr);
                                         cpr++;
                                         break;
                                     case 2:
@@ -482,7 +482,7 @@ int main(){
                                         case 1:
                                             cout<<"\n\tREGISTRO DE PRODUCTO\n"<<endl;
                                             fflush(stdin);
-                                            cout<<"Ingresar nombre de producto: ";
+                                            cout<<"Ingresar nombre de producto(Max. 50 caracteres): ";
                                             getline(cin,n);
                                             cout<<"Ingresar categoria de producto: ";
                                             getline(cin,ctg);
@@ -500,15 +500,15 @@ int main(){
                                             fflush(stdin);
                                             cout<<"Ingrese codigo de proveedor: ";
                                             getline(cin,cod);
-                                            int pos;
-                                            for(int i=0;i<cpr;i++){
-                                                if(cod==proveedor[i]->get_codigo()){
-                                                   pos=i;
-                                                   break;
-                                                }
+                                            pos=buscador(proveedor,cpr,cod);
+                                            if(pos>=0){
+                                               cout<<"\nCodigo ingresado correctamente"<<endl;
+                                               producto[cp]=new Producto(can,n,ctg,m,g,d,pre,proveedor[pos],cp);
+                                               cp++;
+                                            }else{
+                                                cout<<"\nOpcion incorrecta. Ingrese de nuevo!"<<endl;
                                             }
-                                            producto[cp]=new Producto(can,n,ctg,m,g,d,pre,proveedor[pos],cp);
-                                            cp++;
+                                            system("pause");
                                             break;
                                         case 2:
                                             cout<<"\n\tMODIFICAR PRODUCTO\n"<<endl;
@@ -540,6 +540,7 @@ int main(){
                                                     getline(cin,cod);
                                                     pos1=buscador(proveedor,cpr,cod);
                                                     if(pos1>=0){
+                                                        cout<<"\nCodigo ingresado correctamente"<<endl;
                                                         producto[pos]->set_proveedor(proveedor[pos1]);
                                                     }else{
                                                         cout<<"\nCodigo de proveedor incorrecto. Ingrese de nuevo!"<<endl;
