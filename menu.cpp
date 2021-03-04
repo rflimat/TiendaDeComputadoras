@@ -69,14 +69,14 @@ int main(){
     //producto[10]=new Producto();
 
     //Facturas
-    factura[0]=new Factura(0,"20/02/2020","Efectivo",cliente[0],vendedor[0]); 
+    factura[0]=new Factura(0,"04/03/2021","Efectivo",cliente[0],vendedor[0]); 
     registro[0]=new Registro(); registro[0]->agregar_producto(producto[2],1);
     factura[0]->set_registro(registro[0]);factura[0]->set_total(registro[0]->get_total());
 
     string us,ct,u,c,n,a,d,t,m,cr,tp,pf,r,g,ctg,fe,cod,det,asg;
     char caracter;float s,pre;
     int e,can,entrar,menu,pr,p,f,v,in,td,pos;
-    int cv=1,cc=1,cpr=2,cp=8,cf=1,ci=0;
+    int cv=3,cc=5,cpr=2,cp=10,cf=1,ci=0;
     int y=0,z=0;
     do{
         system("cls");
