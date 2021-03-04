@@ -66,6 +66,13 @@ int main(){
     producto[7]=new Producto(3,"WD M.2 SSD 1TB","Disco Solido","Western Digital","Alta","Disco duro veloz",729.00,proveedor[0],7);
     producto[8]=new Producto(2,"EVGA 600W Real 80","Fuente de Poder","EVGA","Alta","Fuente de poder excelente",280.00,proveedor[0],8);
     producto[9]=new Producto(2,"Cooler Aerocool Mirage 360 Argb","Cooler","Aerocool","Alta","Enfriamento RGB",490.00,proveedor[0],9);
+
+    producto[10]=new Producto(3,"Teclado Razer Huntsman Mini Mercury","Razer","Teclado","Alta","dispositivo o periférico de entrada",459.00,proveedor[1],10);
+    producto[11]=new Producto(7,"G203 LIGHTSYNC","Logitech","mouse","Media","dispositivo apuntador",120.00,proveedor[1],11);
+    producto[12]=new Producto(5,"MONITOR SAMSUNG 24 FHD","SAMSUNG","MONITOR","Alta","dispositivo de interfaz",490.00,proveedor[1],12);
+    producto[13]=new Producto(3,"IMPRESORA EPSON L15150 A3","Epson","IMPRESORA","Alta","plasmando textos o imágenes en un papel",542.00,proveedor[1],13);
+    producto[14]=new Producto(2,"CAMARA WEB ANTRYX V-CAM PRO SX350","ANTRYX","CAMARA WEB","Media","capturar imágenes y transmitirlas a través de Internet",160.00,proveedor[1],14);
+    producto[15]=new Producto(3,"AUDÍFONO CON MICRÓFONO LOGITECH H151 STEREO","LOGITECH","AUDÍFONO CON MICRÓFONO","Media","capta las ondas sonoras ",101.00,proveedor[1],15);
     //producto[10]=new Producto();
 
     //Facturas
