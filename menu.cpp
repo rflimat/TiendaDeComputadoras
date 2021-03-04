@@ -57,23 +57,21 @@ int main(){
     //Productos
     //producto[indice]=new Producto(cantidad,nombre,categoria,marca,gama,descripcion,precio,proveedor[1],indice);
     producto[0]=new Producto(2,"Case Gamer Aerocool Prime-g-bk-v2 RGB","Gabinete","Aerocool","Alta","Gamer full",149.00,proveedor[0],0);
-    producto[1]=new Producto(3,"Asus X570 E-Gaming","Placa Madre","Asus","Alta","Placa superpotente",785.00,proveedor[0],1);
-    producto[2]=new Producto(3,"Asus X570 E-Gaming","Placa Madre","Asus","Alta","Placa superpotente",785.00,proveedor[0],2);
-    producto[3]=new Producto(2,"AMD Ryzen 9 3900X","Procesador","AMD","Alta","Procesador superpotente",2430.00,proveedor[0],3);
-    producto[4]=new Producto(2,"AMD Ryzen 9 3900X","Procesador","AMD","Alta","Procesador superpotente",2430.00,proveedor[0],4);
+    producto[1]=new Producto(3,"Gigabyte H410m","Placa Madre","Gigabyte","Media","Placa madre INTEL",329.00,proveedor[0],1);
+    producto[2]=new Producto(3,"Asus X570 E-Gaming","Placa Madre","Asus","Alta","Placa madre AMD",785.00,proveedor[0],2);
+    producto[3]=new Producto(2,"AMD Ryzen 9 3900X","Procesador","AMD","Alta","Procesador con 12 nucleos y 24 hilos",2430.00,proveedor[0],3);
+    producto[4]=new Producto(2,"Core i5 10500","Procesador","Intel","Media","Procesador con 6 nucleos con 12 hilos",819.00,proveedor[0],4);
     producto[5]=new Producto(5,"HyperX DDR4 32GB","Memoria RAM","HyperX","Alta","Memoria estable para tu PC",829.00,proveedor[0],5);
     producto[6]=new Producto(2,"Asus Nvidia RTX 2060","Tarjeta grafica","Asus","Alta","Tarjeta grafica para gaming",1869.00,proveedor[0],6);
     producto[7]=new Producto(3,"WD M.2 SSD 1TB","Disco Solido","Western Digital","Alta","Disco duro veloz",729.00,proveedor[0],7);
     producto[8]=new Producto(2,"EVGA 600W Real 80","Fuente de Poder","EVGA","Alta","Fuente de poder excelente",280.00,proveedor[0],8);
     producto[9]=new Producto(2,"Cooler Aerocool Mirage 360 Argb","Cooler","Aerocool","Alta","Enfriamento RGB",490.00,proveedor[0],9);
-
     producto[10]=new Producto(3,"Teclado Razer Huntsman Mini Mercury","Razer","Teclado","Alta","dispositivo o periférico de entrada",459.00,proveedor[1],10);
     producto[11]=new Producto(7,"G203 LIGHTSYNC","Logitech","mouse","Media","dispositivo apuntador",120.00,proveedor[1],11);
     producto[12]=new Producto(5,"MONITOR SAMSUNG 24 FHD","SAMSUNG","MONITOR","Alta","dispositivo de interfaz",490.00,proveedor[1],12);
     producto[13]=new Producto(3,"IMPRESORA EPSON L15150 A3","Epson","IMPRESORA","Alta","plasmando textos o imágenes en un papel",542.00,proveedor[1],13);
     producto[14]=new Producto(2,"CAMARA WEB ANTRYX V-CAM PRO SX350","ANTRYX","CAMARA WEB","Media","capturar imágenes y transmitirlas a través de Internet",160.00,proveedor[1],14);
-    producto[15]=new Producto(3,"AUDÍFONO CON MICRÓFONO LOGITECH H151 STEREO","LOGITECH","AUDÍFONO CON MICRÓFONO","Media","capta las ondas sonoras ",101.00,proveedor[1],15);
-    //producto[10]=new Producto();
+    producto[15]=new Producto(3,"AUDIFONO CON MICROFONO LOGITECH H151","LOGITECH","AUDÍFONO CON MICRÓFONO","Media","capta las ondas sonoras ",101.00,proveedor[1],15);
 
     //Facturas
     factura[0]=new Factura(0,"04/03/2021","Efectivo",cliente[0],vendedor[0]); 
@@ -83,7 +81,7 @@ int main(){
     string us,ct,u,c,n,a,d,t,m,cr,tp,pf,r,g,ctg,fe,cod,det,asg;
     char caracter;float s,pre;
     int e,can,entrar,menu,pr,p,f,v,in,td,pos;
-    int cv=3,cc=5,cpr=2,cp=10,cf=1,ci=0;
+    int cv=3,cc=5,cpr=2,cp=16,cf=1,ci=0;
     int y=0,z=0;
     do{
         system("cls");
